@@ -1,0 +1,8 @@
+.spaceListButton {
+  border-bottom: 1px solid black;
+  font-weight: lighter;
+  width: 50%;
+  min-width: fit-content;
+  padding: 10px;
+  font-size: 1.5em;
+}
