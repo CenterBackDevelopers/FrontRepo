@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./SignInPage.module.css";
 import { useRef, useState, useEffect } from "react";
 import { signIn } from "../api";
@@ -12,6 +12,8 @@ const initialInputs = {
 };
 
 function SignInPage() {
+  const navigate = useNavigate();
+
   // 아이디와 비밀번호를 객체로 저장하는 State
   const [inputs, setInputs] = useState(initialInputs);
   // 아이디/비밀번호가 틀렸는지를 저장하는 State
@@ -32,12 +34,16 @@ function SignInPage() {
       [idNode.name]: idNode.value,
       [passwordNode.name]: passwordNode.value,
     });
-    console.log(inputs);
   };
 
   // 로그인 버튼을 누르면 작동할 핸들러
   const handleSignIn = async () => {
-    setIsCorrect(await signIn(inputs));
+    const result = await signIn(inputs);
+    setIsCorrect(result);
+    // 아이디 비밀번호를 올바르게 입력했으면 SpacePage로 이동
+    if (result) {
+      navigate("/space");
+    }
   };
 
   // 비밀번호를 볼 수 있게 만드는 버튼의 핸들러
