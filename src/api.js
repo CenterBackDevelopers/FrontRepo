@@ -6,7 +6,6 @@ export async function signIn({ id, password }) {
   for (let data of signInData) {
     if (data.id === id && data.password === password) {
       // 아이디/비밀번호가 올바르면 true를 리턴함
-      console.log("로그인 승인");
       return true;
     }
   }
@@ -32,6 +31,9 @@ export async function getIsDuplicate(id) {
 
 // SignUpPage의 회원 가입 함수
 export async function postSignUp(member) {
+  // 회원 가입이 완료되면 response를 반환함
+  // 임시로 true로 함
   console.log("회원 가입이 완료됨");
   console.log(member);
+  return true;
 }

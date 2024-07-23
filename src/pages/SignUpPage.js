@@ -1,8 +1,9 @@
-/* 회원가입 페이지 */
 import { useState, useEffect, useRef } from "react";
 import style from "./SignUpPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getIsDuplicate, postSignUp } from "../api";
+import warningImg from "../assets/warning.png";
+/* 회원가입 페이지 */
 
 // inputs의 초깃값
 const initialInputs = {
@@ -25,6 +26,7 @@ const initialEmail = {
 };
 
 function SignUpPage() {
+  const navigate = useNavigate();
   // input들의 value를 담을 State
   const [inputs, setInputs] = useState(initialInputs);
   const [TSVType, setTSVType] = useState(initialTSVType);
@@ -254,6 +256,7 @@ function SignUpPage() {
   const handleSignUp = async () => {
     // 모든 조건이 충족해야 회원가입 요청을 보냄
     // 이름, 아이디, 비밀번호의 특수문자/자릿수 조건은 구현하지 않음
+    // 2차 인증 조건은 구현하지 않음
     if (isDuplicate == null || isDuplicate) {
       alert("아이디가 올바르지 않습니다");
       return;
@@ -261,15 +264,6 @@ function SignUpPage() {
     if (!isCorrectPasswordChecking) {
       alert("비밀번호가 올바르지 않습니다");
       return;
-    }
-    if (!TSVType) {
-      alert("2차 인증 방법이 선택되지 않았습니다");
-      return;
-    } else if (
-      (TSVType === "phone" && !phone.isCertified) ||
-      (TSVType === "email" && !email.isCertified)
-    ) {
-      alert("2차 인증이 완료되지 않았습니다.");
     }
 
     // 모든 조건이 충족됐다면 API에 회원가입 리퀘스트를 보냄
@@ -283,7 +277,10 @@ function SignUpPage() {
         data: TSVData,
       },
     };
-    postSignUp(member);
+    const result = await postSignUp(member);
+    if (result) {
+      navigate("/space");
+    }
   };
 
   return (
@@ -362,12 +359,18 @@ function SignUpPage() {
             <div className={style.select}>
               <h2>2차인증</h2>
               <h5>아이디 비밀번호 분실시 활용됩니다</h5>
+              <div className={style.temporary}>
+                <img src={warningImg} />
+                <p>아직 구현되지 않은 기능입니다</p>
+              </div>
               <div className={style.selectBox}>
                 <label>
                   <input
                     type="radio"
                     name="type"
                     value="phone"
+                    // 임시 비활성화
+                    disabled={true}
                     onChange={handleTypeChange}
                   />
                   휴대전화
@@ -377,6 +380,8 @@ function SignUpPage() {
                     type="radio"
                     name="type"
                     value="email"
+                    // 임시 비활성화
+                    disabled={true}
                     onChange={handleTypeChange}
                   />
                   이메일
