@@ -1,0 +1,46 @@
+.container {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+}
+.wrapper {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.imgContainer {
+  width: 100%;
+  text-align: center;
+}
+.container img {
+  width: 50%;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  color: #7cabe1;
+}
+.comment {
+  padding: 2vw 5vw;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  color: #0b3668;
+}
+.buttonContainer {
+  margin: 20px;
+}
+.buttonContainer button {
+  background-color: white;
+  border: 2px solid gray;
+  font-size: 1.1em;
+  padding: 10px 40px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 3px gray;
+}
+.buttonContainer button:active {
+  box-shadow: none;
+  background-color: #e7e7e7;
+}

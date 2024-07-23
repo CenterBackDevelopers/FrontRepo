@@ -3,6 +3,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import WelcomePage from "./pages/WelcomePage";
 import SpacePage from "./pages/SpacePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function Main() {
   return (
@@ -12,6 +13,7 @@ function Main() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/space" element={<SpacePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -86,11 +86,6 @@ function SignInPage() {
             />
           </div>
           <div className={style.password}>
-            <div className={style.showPassword}>
-              <button onClick={handleShowPassword}>
-                <img src={passwordIcon} />
-              </button>
-            </div>
             <input
               value={inputs.password}
               onChange={handleChange}
@@ -99,6 +94,11 @@ function SignInPage() {
               ref={passwordRef}
               type="password"
             />
+            <div className={style.showPassword}>
+              <button onClick={handleShowPassword}>
+                <img src={passwordIcon} />
+              </button>
+            </div>
           </div>
 
           <div className={style.options}>
