@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import style from "./Calendar.module.css";
 import { getCalendar } from "../api";
+import notFoundImage from "../assets/notFound.png";
 
 // 캘린더 최상위 컴포넌트
 function Calendar() {
@@ -15,9 +16,15 @@ function Calendar() {
 
   return (
     <div className={style.calendarContainer}>
-      {items.map((item) => {
-        return <CalendarItem key={item.id} item={item} />;
-      })}
+      <div className={style.calendar}>
+        <img src={notFoundImage} />
+        <p>달력은 아직 구현되지 않았습니다</p>
+      </div>
+      <div className={style.itemsContainer}>
+        {items.map((item) => {
+          return <CalendarItem key={item.id} item={item} />;
+        })}
+      </div>
     </div>
   );
 }
@@ -26,17 +33,21 @@ function Calendar() {
 function CalendarItem({ item }) {
   const { title } = item;
   const date = new Date(item.date);
-  const now = new Date();
-  const dateDiff = date - now;
-  const D_Day = Math.ceil(dateDiff / (1000 * 3600 * 24));
-  console.log(D_Day);
+  const dDay = getD_Day(date);
 
   return (
     <li className={style.calendarItem}>
       <h3>{title}</h3>
-      <div>{D_Day}</div>
+      <div>D - {dDay}</div>
     </li>
   );
 }
+
+// D-Day 계산 함수
+const getD_Day = (date) => {
+  const now = new Date();
+  const diff = date - now;
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+};
 
 export default Calendar;

@@ -1,6 +1,6 @@
 import Nav from "../components/Nav";
 import TodoList from "../components/TodoList";
-import style from "./SpacePage.module.css";
+import style from "./TodoPage.module.css";
 import SpaceList from "../components/SpaceList";
 import { useState } from "react";
 
