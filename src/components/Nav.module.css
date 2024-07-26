@@ -8,12 +8,14 @@
   position: fixed;
   bottom: 0px;
   width: 100%;
-  background-color: #f5f5f5;
   padding: 10px;
+}
+.container a {
+  text-decoration: none;
 }
 .nav {
   display: grid;
-  grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .navButtonContainer {
   display: flex;
@@ -30,18 +32,33 @@
   border: none;
   background-color: unset;
 }
-.nav .navBorder {
-  width: 1px;
-  margin: 8px 0;
-  border: 1px solid gray;
-}
 
-.addItemButton img {
+.addItemButtonContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
   position: absolute;
   right: 20px;
-  top: -90px;
-  padding: 20px;
-  width: 20%;
+  top: -50px;
+  width: fit-content;
+  height: 40px;
+
+  background-color: rgb(232, 232, 232);
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 7px;
+}
+.addItemButtonContainer p {
+}
+.addItemButtonContainer img {
+  height: 30px;
   border-radius: 50%;
-  background-color: #e8f9e5;
+  background-color: rgb(200, 200, 200);
+}
+
+.currentPage {
+  background-color: #eaeaea;
+  border-radius: 15px;
 }
