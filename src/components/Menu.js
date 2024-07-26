@@ -10,15 +10,18 @@ function Menu({ onDelete }) {
   };
   return (
     <div className={style.menuContainer}>
-      <h1 className={style.title}>Menu</h1>
-      <ul>
-        <li onClick={handleThemeClick}>테마</li>
-        <li onClick={handleLanguageClick}>언어</li>
-        <li onClick={handleLogoutClick}>로그아웃</li>
-      </ul>
-      <div className={style.exit} onClick={handleExitClick}>
-        닫기
+      <div className={style.menu}>
+        <h1 className={style.title}>Menu</h1>
+        <ul>
+          <li onClick={handleThemeClick}>테마</li>
+          <li onClick={handleLanguageClick}>언어</li>
+          <li onClick={handleLogoutClick}>로그아웃</li>
+        </ul>
+        <div className={style.exit} onClick={handleExitClick}>
+          닫기
+        </div>
       </div>
+      <div className={style.another} onClick={handleExitClick}></div>
     </div>
   );
 }

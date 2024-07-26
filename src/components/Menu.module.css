@@ -1,4 +1,4 @@
-.menuContainer {
+.menu {
   position: fixed;
   height: 100vh;
   top: 0;
@@ -7,22 +7,34 @@
   left: 0;
   padding: 20px;
   opacity: 0.9;
+  padding-left: 10vw;
+  text-align: right;
+  width: 60%;
 }
 .title {
   font-size: 15vw;
   margin-bottom: 20px;
 }
-.menuContainer ul {
+.menu ul {
   list-style-type: none;
 }
-.menuContainer li {
-  text-align: right;
+.menu li {
   font-size: 1.2em;
   margin-bottom: 5px;
 }
-.menuContainer .exit {
+.menu .exit {
   position: absolute;
   bottom: 20px;
   right: 20px;
   font-size: 1.2em;
+}
+
+.another {
+  position: fixed;
+  width: 40%;
+  top: 0px;
+  right: 0px;
+  background-color: gray;
+  height: 100vh;
+  opacity: 0.4;
 }

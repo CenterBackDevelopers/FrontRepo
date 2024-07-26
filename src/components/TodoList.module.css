@@ -10,11 +10,11 @@
   font-size: 40px;
   border-bottom: 2px solid black;
   padding-bottom: 5px;
-  margin: 20px 20px 0;
+  margin: 5px 20px 0;
 }
 
 .todoContainer {
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
   list-style-type: none;
   padding: 20px;
