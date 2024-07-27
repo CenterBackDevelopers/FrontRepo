@@ -33,7 +33,10 @@ function Nav({ currentPage = "TodoPage" }) {
 
   return (
     <section className={style.container}>
-      <AddItemButton />
+      <div className={style.borderContainer}>
+        <hr />
+      </div>
+      {currentPage === "ManagementPage" || <AddItemButton />}
       <div className={style.nav}>
         <NavButton
           showMenu={showMenu}

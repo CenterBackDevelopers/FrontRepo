@@ -3,6 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+.borderContainer {
+  position: absolute;
+  width: 100%;
+  top: -5px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+}
+.borderContainer hr {
+  width: 85%;
+  height: 1px;
+  border: 1px solid gray;
+}
 
 .container {
   position: fixed;
@@ -11,6 +24,7 @@
   padding: 10px;
   background-color: white;
 }
+
 .container a {
   text-decoration: none;
 }

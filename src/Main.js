@@ -6,7 +6,7 @@ import TodoPage from "./pages/TodoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Calendar from "./components/Calendar";
 import CalendarPage from "./pages/CalendarPage";
-import ManagementPage from "./pages/managementPage";
+import ManagementPage from "./pages/ManagementPage";
 
 function Main() {
   return (

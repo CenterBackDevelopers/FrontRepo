@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
 import style from "./Calendar.module.css";
-import { getCalendar } from "../api";
 import notFoundImage from "../assets/notFound.png";
 
 // 캘린더 최상위 컴포넌트
-function Calendar() {
-  const [items, setItems] = useState([{}]);
-  const getItems = async () => {
-    const calendar = await getCalendar();
-    setItems(calendar);
-  };
-
-  useEffect(() => {
-    getItems();
-  }, [items]);
-
+function Calendar({ items }) {
   return (
     <div className={style.calendarContainer}>
       <div className={style.calendar}>
@@ -23,7 +11,6 @@ function Calendar() {
       </div>
       <div className={style.itemsContainer}>
         {items?.map((item) => {
-          console.log(item.calendarId);
           return <CalendarItem key={item.calendarId} item={item} />;
         })}
       </div>
