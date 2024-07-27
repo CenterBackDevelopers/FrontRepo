@@ -7,7 +7,8 @@ import notFoundImage from "../assets/notFound.png";
 function Calendar() {
   const [items, setItems] = useState([{}]);
   const getItems = async () => {
-    setItems(await getCalendar());
+    const calendar = await getCalendar();
+    setItems(calendar);
   };
 
   useEffect(() => {
@@ -21,8 +22,9 @@ function Calendar() {
         <p>달력은 아직 구현되지 않았습니다</p>
       </div>
       <div className={style.itemsContainer}>
-        {items.map((item) => {
-          return <CalendarItem key={item.id} item={item} />;
+        {items?.map((item) => {
+          console.log(item.calendarId);
+          return <CalendarItem key={item.calendarId} item={item} />;
         })}
       </div>
     </div>

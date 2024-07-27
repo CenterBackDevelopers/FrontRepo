@@ -6,6 +6,7 @@ import TodoPage from "./pages/TodoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Calendar from "./components/Calendar";
 import CalendarPage from "./pages/CalendarPage";
+import ManagementPage from "./pages/managementPage";
 
 function Main() {
   return (
@@ -16,6 +17,7 @@ function Main() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/todo" element={<TodoPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/management" element={<ManagementPage />} />
         <Route path="/test" element={<Calendar />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
