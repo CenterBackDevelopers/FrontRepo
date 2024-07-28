@@ -38,3 +38,45 @@
   height: 100vh;
   opacity: 0.4;
 }
+
+.themeContainer {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(180, 180, 180, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.themeContainer .themeBox {
+  max-width: 80%;
+  width: 800px;
+  padding: 10vw;
+  background-color: white;
+}
+.themeBox .themeTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.optionContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.optionContainer .themeOption {
+  border: 1px solid gray;
+  padding: 20px 0;
+  border-radius: 15px;
+  font-size: 1em;
+}
+.themeOption.white {
+  color: black;
+  background-color: #fdfdfd;
+}
+.themeOption.black {
+  color: white;
+  background-color: #505050;
+}

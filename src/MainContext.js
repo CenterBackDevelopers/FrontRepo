@@ -4,7 +4,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 const MainContext = createContext();
 
 export function MainProvider({ children }) {
+  // 테마는 white 혹은 dark 값을 지님
   const [theme, setTheme] = useState("white");
+
+  const saveTheme = (theme) => {
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
+  };
 
   useEffect(() => {
     const themeStorage = localStorage.getItem("theme");
@@ -15,7 +21,7 @@ export function MainProvider({ children }) {
   }, [theme]);
 
   return (
-    <MainContext.Provider value={{ theme, setTheme }}>
+    <MainContext.Provider value={{ theme, saveTheme }}>
       {children}
     </MainContext.Provider>
   );
@@ -36,5 +42,5 @@ export function useSetTheme() {
   if (!context)
     throw new Error("useTheme()은 반드시 MainProvider 안에서 사용해야 합니다");
 
-  return context.setTheme;
+  return context.saveTheme;
 }
