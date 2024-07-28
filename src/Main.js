@@ -7,10 +7,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Calendar from "./components/Calendar";
 import CalendarPage from "./pages/CalendarPage";
 import ManagementPage from "./pages/ManagementPage";
+import { MainProvider } from "./MainContext";
 
 function Main() {
   return (
-    <BrowserRouter>
+    <MainProvider>
       <Routes>
         <Route path="/" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -21,7 +22,7 @@ function Main() {
         <Route path="/test" element={<Calendar />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </MainProvider>
   );
 }
 
