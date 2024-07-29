@@ -1,15 +1,38 @@
 import style from "./Nav.module.css";
 import plusImg from "../assets/plus.png";
-import menuImg from "../assets/menu.png";
-import todoImg from "../assets/todo.png";
-import calendarImg from "../assets/calendar.png";
-import manageImg from "../assets/manage.png";
+import menuWhiteImg from "../assets/menu.png";
+import menuDarkImg from "../assets/menuWhite.png";
+import todoWhiteImg from "../assets/todo.png";
+import todoDarkImg from "../assets/todoWhite.png";
+import calendarWhiteImg from "../assets/calendar.png";
+import calendarDarkImg from "../assets/calendarWhite.png";
+import manageWhiteImg from "../assets/manage.png";
+import manageDarkImg from "../assets/menuWhite.png";
 import Menu from "./Menu";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  addItemButtonContainer,
+  addItemButtonImg,
+  base,
+  navButton,
+  navCurrentPage,
+} from "../darkStyles";
+import { useTheme } from "../MainContext";
 
 // 네비게이션 컴포넌트
 function Nav({ currentPage = "TodoPage" }) {
+  // 다크 모드 스타일
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const baseStyle = isDark ? base : undefined;
+
+  // 테마에 따른 이미지 선택
+  const todoImg = isDark ? todoDarkImg : todoWhiteImg;
+  const menuImg = isDark ? menuDarkImg : menuWhiteImg;
+  const calendarImg = isDark ? calendarDarkImg : calendarWhiteImg;
+  const manageImg = isDark ? manageDarkImg : manageWhiteImg;
+
   const [showMenu, setShowMenu] = useState(false);
   const handleMenuClick = () => {
     setShowMenu(true);
@@ -32,10 +55,7 @@ function Nav({ currentPage = "TodoPage" }) {
   }
 
   return (
-    <section className={style.container}>
-      <div className={style.borderContainer}>
-        <hr />
-      </div>
+    <section style={baseStyle} className={style.container}>
       {currentPage === "ManagementPage" || <AddItemButton />}
       <div className={style.nav}>
         <NavButton
@@ -78,16 +98,23 @@ function NavButton({
   onDelete = () => {},
   isCurrent = false,
 }) {
-  const opacityStyle = isCurrent && "currentPage";
+  let currentStyle = isCurrent && "currentPage";
+
+  // 다크 모드 스타일
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const darkCurrentPage = isCurrent && isDark ? navCurrentPage : undefined;
+  const darkButton = isDark ? navButton : undefined;
 
   return (
     <div
-      className={`${style.navButtonContainer} ${style[opacityStyle]}`}
+      className={`${style.navButtonContainer} ${style[currentStyle]}`}
+      style={darkCurrentPage}
       onClick={onClick}
     >
       {showMenu && <Menu onDelete={onDelete} />}
       <img src={img} />
-      <button>{children}</button>
+      <button style={darkButton}>{children}</button>
     </div>
   );
 }
@@ -95,9 +122,12 @@ function NavButton({
 // 아이템 추가 버튼
 function AddItemButton() {
   return (
-    <div className={style.addItemButtonContainer}>
+    <div
+      style={addItemButtonContainer}
+      className={style.addItemButtonContainer}
+    >
       <p>추가하기</p>
-      <img src={plusImg} />
+      <img style={addItemButtonImg} src={plusImg} />
     </div>
   );
 }

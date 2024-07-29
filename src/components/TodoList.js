@@ -1,10 +1,13 @@
+import { borderBottom } from "../darkStyles";
 import style from "./TodoList.module.css";
 
 // 투두리스트 탭이 눌리면 호출될 상위 컴포넌트
 function TodoList({ todoItems = [] }) {
   return (
     <section className={style.container}>
-      <h2 className={style.title}>TodoList</h2>
+      <h2 style={borderBottom} className={style.title}>
+        TodoList
+      </h2>
       <ItemList items={todoItems} />
     </section>
   );

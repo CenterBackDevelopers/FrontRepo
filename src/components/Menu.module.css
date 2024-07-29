@@ -52,10 +52,11 @@
   align-items: center;
 }
 .themeContainer .themeBox {
-  max-width: 80%;
   width: 800px;
+  max-width: 80%;
   padding: 10vw;
   background-color: white;
+  border-radius: 10px;
 }
 .themeBox .themeTitle {
   text-align: center;
@@ -79,4 +80,11 @@
 .themeOption.black {
   color: white;
   background-color: #505050;
+}
+.themeBox .closeContainer {
+  text-align: center;
+}
+.closeContainer .close {
+  font-size: 1.1em;
+  margin-top: 20px;
 }

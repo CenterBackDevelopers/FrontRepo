@@ -22,3 +22,11 @@
 .option:active {
   background-color: #f1f1f1;
 }
+.option.dark {
+  background-color: #555555;
+  color: #f0f0f0;
+  border: 1px solid #999999;
+}
+.option.dark:active {
+  background-color: #444444;
+}

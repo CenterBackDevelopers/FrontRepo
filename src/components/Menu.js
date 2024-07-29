@@ -1,27 +1,32 @@
 import { useState } from "react";
 import style from "./Menu.module.css";
 import { useSetTheme, useTheme } from "../MainContext";
+import { menuAnother, menuContainer } from "../darkStyles";
 
 // 촤측 하단 메뉴 버튼을 누르면 호출될 컴포넌트
 function Menu({ onDelete }) {
   const [isVisibleTheme, setIsShowTheme] = useState(false);
-  const handleThemeClick = () => {
-    setIsShowTheme(true);
-  };
-  const handleCloseTheme = () => {
-    setIsShowTheme(false);
+  const toggleThemeVisibility = () => {
+    setIsShowTheme((prevState) => !prevState);
   };
   const handleLanguageClick = () => {};
   const handleLogoutClick = () => {};
   const handleExitClick = (e) => {
     onDelete(e);
   };
+
+  // 다크 테마 적용
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const darkAnother = isDark ? menuAnother : undefined;
+  const darkMenu = isDark ? menuContainer : undefined;
+
   return (
     <div className={style.menuContainer}>
-      <div className={style.menu}>
+      <div className={style.menu} style={darkMenu}>
         <h1 className={style.title}>Menu</h1>
         <ul>
-          <li onClick={handleThemeClick}>테마</li>
+          <li onClick={toggleThemeVisibility}>테마</li>
           <li onClick={handleLanguageClick}>언어</li>
           <li onClick={handleLogoutClick}>로그아웃</li>
         </ul>
@@ -29,15 +34,21 @@ function Menu({ onDelete }) {
           닫기
         </div>
       </div>
-      <div className={style.another} onClick={handleExitClick}></div>
-      <ThemeController isVisible={isVisibleTheme} onDelete={handleCloseTheme} />
+      <div
+        className={style.another}
+        style={darkAnother}
+        onClick={handleExitClick}
+      ></div>
+      <ThemeController
+        isVisible={isVisibleTheme}
+        onDelete={toggleThemeVisibility}
+      />
     </div>
   );
 }
 
 function ThemeController({ isVisible, onDelete }) {
   const setTheme = useSetTheme();
-  const theme = useTheme();
 
   const preventBubbling = (e) => {
     e.stopPropagation();
@@ -69,7 +80,9 @@ function ThemeController({ isVisible, onDelete }) {
           </button>
         </div>
         <div className={style.closeContainer}>
-          <button className={style.close}>닫기</button>
+          <button className={style.close} onClick={onDelete}>
+            닫기
+          </button>
         </div>
       </div>
     </div>

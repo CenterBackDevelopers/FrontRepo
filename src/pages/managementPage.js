@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import SpaceList from "../components/SpaceList";
-import style from "./Management.module.css";
+import style from "./ManagementPage.module.css";
 import { getSpace } from "../api";
 import Management from "../components/Management";
+import { useTheme } from "../MainContext";
+import { base } from "../darkStyles";
 
 function ManagementPage() {
   const [spaceName, setSpaceName] = useState("");
@@ -17,8 +19,13 @@ function ManagementPage() {
     getData();
   }, [spaceName]);
 
+  // 다크 테마
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const baseStyle = isDark ? base : undefined;
+
   return (
-    <div className={style.container}>
+    <div style={baseStyle} className={style.container}>
       <SpaceList spaceName={spaceName} />
       <Management />
       <Nav currentPage={"ManagementPage"} />
