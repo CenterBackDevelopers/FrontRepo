@@ -1,5 +1,5 @@
 import { borderBottom } from "../darkStyles";
-import style from "./SpaceList.module.css";
+import style from "../styles/SpaceList.module.css";
 
 // 스페이스 리스트의 상위 컴포넌트
 function SpaceList({ spaceName }) {

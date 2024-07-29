@@ -1,6 +1,6 @@
 import { managementOption } from "../darkStyles";
 import { useTheme } from "../MainContext";
-import style from "./Management.module.css";
+import style from "../styles/Management.module.css";
 
 function Management() {
   // 다크 테마(active는 inline style로 적용이 불가능해 스타일명을 통해 css 파일로 지정함)

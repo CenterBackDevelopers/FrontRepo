@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import SpaceList from "../components/SpaceList";
-import style from "./ManagementPage.module.css";
+import style from "../styles/ManagementPage.module.css";
 import { getSpace } from "../api";
 import Management from "../components/Management";
 import { useTheme } from "../MainContext";

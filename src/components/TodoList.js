@@ -1,5 +1,5 @@
 import { borderBottom } from "../darkStyles";
-import style from "./TodoList.module.css";
+import style from "../styles/TodoList.module.css";
 
 // 투두리스트 탭이 눌리면 호출될 상위 컴포넌트
 function TodoList({ todoItems = [] }) {

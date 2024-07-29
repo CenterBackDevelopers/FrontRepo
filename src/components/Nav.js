@@ -1,4 +1,4 @@
-import style from "./Nav.module.css";
+import style from "../styles/Nav.module.css";
 import plusImg from "../assets/plus.png";
 import menuWhiteImg from "../assets/menu.png";
 import menuDarkImg from "../assets/menuWhite.png";

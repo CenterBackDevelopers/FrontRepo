@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import style from "./SignInPage.module.css";
+import style from "../styles/SignInPage.module.css";
 import { useRef, useState, useEffect } from "react";
 import { signIn } from "../api";
 import showPassword from "../assets/showPassword.png";

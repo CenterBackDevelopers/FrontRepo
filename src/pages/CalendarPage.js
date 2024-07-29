@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Calendar from "../components/Calendar";
 import Nav from "../components/Nav";
 import SpaceList from "../components/SpaceList";
-import style from "./CalendarPage.module.css";
+import style from "../styles/CalendarPage.module.css";
 import { getCalendar, getSpace } from "../api";
 import { useTheme } from "../MainContext";
 import { base } from "../darkStyles";

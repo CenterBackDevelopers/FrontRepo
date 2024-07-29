@@ -1,11 +1,11 @@
 import Nav from "../components/Nav";
 import TodoList from "../components/TodoList";
-import style from "./TodoPage.module.css";
+import style from "../styles/TodoPage.module.css";
 import SpaceList from "../components/SpaceList";
 import { useEffect, useState } from "react";
 import { getSpace, getTodo } from "../api";
 import { base } from "../darkStyles";
-import { useSetTheme, useTheme } from "../MainContext";
+import { useTheme } from "../MainContext";
 
 function TodoPage() {
   const [todoItems, setTodoItems] = useState([]);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "./WelcomePage.module.css";
+import style from "../styles/WelcomePage.module.css";
 import join from "../assets/join.png";
 import create from "../assets/create.png";
 

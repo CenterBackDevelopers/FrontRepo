@@ -1,4 +1,4 @@
-import style from "./Calendar.module.css";
+import style from "../styles/Calendar.module.css";
 import notFoundImage from "../assets/notFound.png";
 import { base, calendarItemBorder } from "../darkStyles";
 import { useTheme } from "../MainContext";

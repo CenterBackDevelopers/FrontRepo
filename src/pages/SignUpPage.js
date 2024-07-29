@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import style from "./SignUpPage.module.css";
+import style from "../styles/SignUpPage.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { getIsDuplicate, postSignUp } from "../api";
 import warningImg from "../assets/warning.png";

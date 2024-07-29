@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "./Menu.module.css";
+import style from "../styles/Menu.module.css";
 import { useSetTheme, useTheme } from "../MainContext";
 import { menuAnother, menuContainer } from "../darkStyles";
 
