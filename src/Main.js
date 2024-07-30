@@ -8,19 +8,24 @@ import Calendar from "./components/Calendar";
 import CalendarPage from "./pages/CalendarPage";
 import ManagementPage from "./pages/ManagementPage";
 import { MainProvider } from "./MainContext";
+import SpaceListPage from "./pages/SpaceListPage";
+import Wrapper from "./Wrapper";
 
 function Main() {
   return (
     <MainProvider>
       <Routes>
-        <Route path="/" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/todo" element={<TodoPage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/management" element={<ManagementPage />} />
-        <Route path="/test" element={<Calendar />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<Wrapper />}>
+          <Route index element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/todo" element={<TodoPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/management" element={<ManagementPage />} />
+          <Route path="/spaces" element={<SpaceListPage />} />
+          <Route path="/test" element={<Calendar />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </MainProvider>
   );
