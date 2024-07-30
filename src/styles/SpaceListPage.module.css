@@ -4,6 +4,7 @@
   align-items: center;
   padding: 10vh 10vw;
   background-color: white;
+  min-height: 100vh;
 }
 .container ul {
   list-style-type: none;
@@ -27,18 +28,37 @@
   display: flex;
   align-items: center;
   margin-bottom: 1.5vh;
+  text-align: center;
+}
+.item .itemButtonContainer {
+  display: flex;
+  justify-content: center;
 }
 .item button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1em;
+  font-size: 1.1em;
   width: 90%;
-  background-color: aliceblue;
-  border: 1px solid gray;
-  border-radius: 5px;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid gray;
   padding: 3px;
+  cursor: pointer;
 }
 .item img {
   width: 10%;
+}
+
+.create {
+  width: 80%;
+}
+.create button {
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: inherit;
+  border: 1px solid gray;
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
 }

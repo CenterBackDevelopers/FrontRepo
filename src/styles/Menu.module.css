@@ -73,6 +73,7 @@
   font-size: 1em;
   border: none;
   background-color: inherit;
+  cursor: pointer;
 }
 .optionContainer {
   display: grid;
