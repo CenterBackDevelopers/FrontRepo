@@ -85,6 +85,13 @@ function Nav({ currentPage = "TodoPage" }) {
           </NavButton>
         </Link>
       </div>
+      {showMenu && (
+        <Menu
+          onDelete={() => {
+            setShowMenu(false);
+          }}
+        />
+      )}
     </section>
   );
 }
@@ -112,7 +119,6 @@ function NavButton({
       style={darkCurrentPage}
       onClick={onClick}
     >
-      {showMenu && <Menu onDelete={onDelete} />}
       <img src={img} />
       <button style={darkButton}>{children}</button>
     </div>

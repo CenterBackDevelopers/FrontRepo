@@ -19,7 +19,7 @@
 
 .itemsContainer {
   min-height: 40vh;
-  overflow: scroll;
+  overflow-y: auto;
   height: 36vh;
   margin: 10px auto;
   width: 85%;

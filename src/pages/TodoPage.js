@@ -1,11 +1,12 @@
 import Nav from "../components/Nav";
 import TodoList from "../components/TodoList";
 import style from "../styles/TodoPage.module.css";
-import SpaceList from "../components/SpaceList";
+import SpaceList from "../components/SpaceListButton";
 import { useEffect, useState } from "react";
 import { getSpace, getTodo } from "../api";
 import { base } from "../darkStyles";
 import { useTheme } from "../MainContext";
+import SpaceListButton from "../components/SpaceListButton";
 
 function TodoPage() {
   const [todoItems, setTodoItems] = useState([]);
@@ -28,7 +29,7 @@ function TodoPage() {
   }, [todoItems, spaceName]);
   return (
     <div style={baseStyle} className={style.container}>
-      <SpaceList spaceName={spaceName} />
+      <SpaceListButton spaceName={spaceName} />
       <TodoList todoItems={todoItems} />
       <Nav currentPage={"TodoPage"} />
     </div>

@@ -29,6 +29,33 @@
             "date": "2024-08-10T02:55:09.785Z"
           }
         ]
+      },
+      {
+        "spaceId": 2,
+        "spaceName": "OurSpace",
+        "todoItems": ["Java 강의 듣기", "운동가기", "커밋하기"],
+        "calendarItems": [
+          {
+            "calendarId": 1,
+            "title": "3대 측정하기",
+            "date": "2024-11-25T02:55:09.785Z"
+          },
+          {
+            "calendarId": 2,
+            "title": "디자인 수정하기",
+            "date": "2024-11-26T00:00:00.785Z"
+          },
+          {
+            "calendarId": 3,
+            "title": "리펙토링 하기",
+            "date": "2024-11-23T02:55:09.785Z"
+          },
+          {
+            "calendarId": 4,
+            "title": "API 만들기",
+            "date": "2024-11-10T02:55:09.785Z"
+          }
+        ]
       }
     ]
   }

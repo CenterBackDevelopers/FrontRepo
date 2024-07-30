@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import Calendar from "../components/Calendar";
 import Nav from "../components/Nav";
-import SpaceList from "../components/SpaceList";
 import style from "../styles/CalendarPage.module.css";
 import { getCalendar, getSpace } from "../api";
 import { useTheme } from "../MainContext";
 import { base } from "../darkStyles";
+import SpaceListButton from "../components/SpaceListButton";
 
 function CalendarPage() {
   const [spaceName, setSpaceName] = useState("");
@@ -29,7 +29,7 @@ function CalendarPage() {
 
   return (
     <div style={baseStyle} className={style.container}>
-      <SpaceList spaceName={spaceName} />
+      <SpaceListButton spaceName={spaceName} />
       <Calendar items={calendarItems} />
       <Nav currentPage={"CalendarPage"} />
     </div>

@@ -10,7 +10,6 @@ export function MainProvider({ children }) {
   useEffect(() => {
     // localStorage에 theme 값이 있으면 반영, 없으면 white
     const localTheme = localStorage.getItem("theme");
-    console.log(localTheme);
     if (localTheme) setTheme(localTheme);
     else setTheme("white");
   }, []);

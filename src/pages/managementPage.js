@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
-import SpaceList from "../components/SpaceList";
 import style from "../styles/ManagementPage.module.css";
 import { getSpace } from "../api";
 import Management from "../components/Management";
 import { useTheme } from "../MainContext";
 import { base } from "../darkStyles";
+import SpaceListButton from "../components/SpaceListButton";
 
 function ManagementPage() {
   const [spaceName, setSpaceName] = useState("");
@@ -26,7 +26,7 @@ function ManagementPage() {
 
   return (
     <div style={baseStyle} className={style.container}>
-      <SpaceList spaceName={spaceName} />
+      <SpaceListButton spaceName={spaceName} />
       <Management />
       <Nav currentPage={"ManagementPage"} />
     </div>

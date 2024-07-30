@@ -46,6 +46,12 @@ export async function getUserData(userId) {
   }
 }
 
+// 한 유저의 모든 스페이스 데이터 요청 함수
+export async function getSpaces(userId = "testid1") {
+  const user = await getUserData(userId);
+  return user.spaces;
+}
+
 // 한 유저의 특정 스페이스 데이터 요청 함수
 export async function getSpace(userId = "testid1", spaceId = 1) {
   const userData = await getUserData(userId);

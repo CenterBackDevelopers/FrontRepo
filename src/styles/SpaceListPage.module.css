@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 10vw;
+  background-color: white;
+}
+.container ul {
+  list-style-type: none;
+}
+.container a {
+  text-decoration: none;
+  color: black;
+}
+.container .title {
+  text-align: center;
+  width: 100%;
+  font-size: 3em;
+  border-bottom: 1px solid black;
+  padding-bottom: 8px;
+}
+
+.itemContainer {
+  padding: 20px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+.item button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  width: 90%;
+  background-color: aliceblue;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 3px;
+}
+.item img {
+  width: 10%;
+}

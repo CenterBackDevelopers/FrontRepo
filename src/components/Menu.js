@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "../styles/Menu.module.css";
 import { useSetTheme, useTheme } from "../MainContext";
-import { menuAnother, menuContainer } from "../darkStyles";
+import { base, menuAnother, menuContainer } from "../darkStyles";
 
 // 촤측 하단 메뉴 버튼을 누르면 호출될 컴포넌트
 function Menu({ onDelete }) {
@@ -60,10 +60,19 @@ function ThemeController({ isVisible, onDelete }) {
     setTheme("dark");
   };
 
+  // 다크 테마
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const baseStyle = isDark ? base : undefined;
+
   if (!isVisible) return;
   return (
     <div className={style.themeContainer} onClick={onDelete}>
-      <div className={style.themeBox} onClick={preventBubbling}>
+      <div
+        style={baseStyle}
+        className={style.themeBox}
+        onClick={preventBubbling}
+      >
         <h2 className={style.themeTitle}>테마 설정</h2>
         <div className={style.optionContainer}>
           <button
@@ -80,7 +89,7 @@ function ThemeController({ isVisible, onDelete }) {
           </button>
         </div>
         <div className={style.closeContainer}>
-          <button className={style.close} onClick={onDelete}>
+          <button style={baseStyle} className={style.close} onClick={onDelete}>
             닫기
           </button>
         </div>

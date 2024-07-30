@@ -12,5 +12,7 @@
 }
 .outlet {
   max-width: 500px;
+  box-shadow: 1px 1px 10px gray;
   width: 100%;
+  min-height: 100vh;
 }
