@@ -25,10 +25,10 @@ export const navButton = {
   color: "#f0f0f0",
 };
 export const menuAnother = {
-  backgroundColor: "#999999",
+  backgroundColor: "#000000",
 };
 export const menuContainer = {
-  backgroundColor: "#222222",
+  backgroundColor: "#333333",
   boxShadow: "1px 0px 10px black",
 };
 export const calendarItemBorder = {

@@ -79,13 +79,13 @@ function ThemeController({ isVisible, onDelete }) {
             className={`${style.themeOption} ${style.white}`}
             onClick={handleWhiteClick}
           >
-            밝은 테마
+            기본 테마
           </button>
           <button
             className={`${style.themeOption} ${style.black}`}
             onClick={handleDarkClick}
           >
-            어두운 테마
+            다크 테마
           </button>
         </div>
         <div className={style.closeContainer}>
