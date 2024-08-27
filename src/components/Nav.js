@@ -33,10 +33,28 @@ function Nav({ currentPage = "TodoPage" }) {
   const calendarImg = isDark ? calendarDarkImg : calendarWhiteImg;
   const manageImg = isDark ? manageDarkImg : manageWhiteImg;
 
+  // 메뉴 버튼을 클릭하면, 메뉴바 컴포넌트를 렌더링함
   const [showMenu, setShowMenu] = useState(false);
   const handleMenuClick = () => {
     setShowMenu(true);
   };
+
+  // 추가하기 버튼을 누르면 컴포넌트를 렌더링함
+  // 닫기 버튼을 누르면 컴포넌트를 닫음
+  const [isVisibleTodo, setIsVibleTodo] = useState(false);
+  const [isVisibleCalendar, setIsVisibleCalendar] = useState(false);
+  const handleAddComponent = (e) => {
+    switch (currentPage) {
+      case "TodoPage":
+        setIsVibleTodo(!isVisibleTodo);
+        break;
+      case "CalendarPage":
+        setIsVisibleCalendar(!isVisibleCalendar);
+        break;
+    }
+  };
+
+  // 현재 페이지의 버튼을 강조하는데 사용할 변수
   const isCurrent = {
     todo: false,
     calendar: false,
@@ -56,17 +74,13 @@ function Nav({ currentPage = "TodoPage" }) {
 
   return (
     <section style={baseStyle} className={style.container}>
-      {currentPage === "ManagementPage" || <AddItemButton />}
+      <AddItemButton currentPage={currentPage} onClick={handleAddComponent} />
+      {isVisibleTodo && <AddTodoController onDelete={handleAddComponent} />}
+      {isVisibleCalendar && (
+        <AddCalendarController onDelete={handleAddComponent} />
+      )}
       <div className={style.nav}>
-        <NavButton
-          showMenu={showMenu}
-          onClick={handleMenuClick}
-          onDelete={(e) => {
-            e.stopPropagation();
-            setShowMenu(false);
-          }}
-          img={menuImg}
-        >
+        <NavButton showMenu={showMenu} onClick={handleMenuClick} img={menuImg}>
           메뉴
         </NavButton>
         <Link to="/todo">
@@ -97,14 +111,7 @@ function Nav({ currentPage = "TodoPage" }) {
 }
 
 // 네비게이션 아이템 컴포넌트
-function NavButton({
-  children,
-  img,
-  onClick = () => {},
-  showMenu = false,
-  onDelete = () => {},
-  isCurrent = false,
-}) {
+function NavButton({ children, img, onClick = () => {}, isCurrent = false }) {
   let currentStyle = isCurrent && "currentPage";
 
   // 다크 모드 스타일
@@ -126,14 +133,199 @@ function NavButton({
 }
 
 // 아이템 추가 버튼
-function AddItemButton() {
+function AddItemButton({ currentPage, onClick }) {
+  // 관리 페이지에서는 렌더링하지 않음
+  if (currentPage === "ManagementPage") {
+    return;
+  }
   return (
     <div
       style={addItemButtonContainer}
       className={style.addItemButtonContainer}
+      onClick={onClick}
     >
       <p>추가하기</p>
       <img style={addItemButtonImg} src={plusImg} />
+    </div>
+  );
+}
+
+// Todo 페이지에서 추가하기 버튼을 누르면 렌더링될 컴포넌트
+function AddTodoController({ onDelete }) {
+  // Theme
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const baseStyle = isDark ? base : undefined;
+
+  // true면 날짜기준, false면 요일기준 초기화
+  const [isDate, setIsDate] = useState(true);
+  const [isFirst, setIsFirst] = useState(true);
+
+  const handleSelect = (e) => {
+    setIsFirst(false);
+    const value = e.target.value;
+
+    if (value === "date") {
+      setIsDate(true);
+    } else {
+      setIsDate(false);
+    }
+  };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    onDelete();
+  };
+
+  const showInput = () => {
+    if (isFirst) return <div>옵션을 선택해 주세요</div>;
+    if (isDate) return <DateInput />;
+    else return <DayInput />;
+  };
+
+  const preventBubbling = (e) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div className={style.addContainer} onClick={handleDelete}>
+      <div
+        className={style.fixedBox}
+        style={baseStyle}
+        onClick={preventBubbling}
+      >
+        <h1 className={style.title}>추가하기</h1>
+        <label className={style.name}>
+          <div>이름</div>
+          <input type="text" />
+        </label>
+        <div className={style.resetContainer}>
+          <h1>초기화 방법 설정</h1>
+          <div className={style.resetMethod}>
+            <label>
+              <div>며칠마다</div>
+              <input
+                type="radio"
+                onChange={handleSelect}
+                value="date"
+                name="reset"
+              />
+            </label>
+            <label>
+              <div>요일마다</div>
+              <input
+                type="radio"
+                onChange={handleSelect}
+                value="day"
+                name="reset"
+              />
+            </label>
+          </div>
+          <div>
+            <h1 className={style.description}>초기화 주기 설정</h1>
+            <div className={style.dueContainer}>{showInput()}</div>
+          </div>
+          <div className={style.closeButton}>
+            <button onClick={handleDelete}>닫기</button>
+          </div>{" "}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 투두 초기화 주기를 날짜로 설정하면 렌더링될 컴포넌트
+function DateInput() {
+  return (
+    <div className={style.dateContainer}>
+      <label>
+        <input type="number" />
+        <div>일</div>
+      </label>
+    </div>
+  );
+}
+
+// 투두 초기화 주기를 요일로 설정하면 렌더링될 컴포넌트
+function DayInput() {
+  return (
+    <div className={style.dayContainer}>
+      <label>
+        <input type="checkbox" />
+        <div>월</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>화</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>수</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>목</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>금</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>토</div>
+      </label>
+      <label>
+        <input type="checkbox" />
+        <div>일</div>
+      </label>
+    </div>
+  );
+}
+
+// Calendar 페이지에서 추가하기 버튼을 누르면 렌더링될 컴포넌트
+function AddCalendarController({ onDelete }) {
+  // Theme
+  const theme = useTheme();
+  const isDark = theme === "dark";
+  const baseStyle = isDark ? base : undefined;
+
+  const preventBubbling = (e) => {
+    e.stopPropagation();
+  };
+  const handleDelete = () => {
+    onDelete();
+  };
+  return (
+    <div className={style.addContainer}>
+      <div
+        className={style.fixedBox}
+        style={baseStyle}
+        onClick={preventBubbling}
+      >
+        <h1 className={style.title}>추가하기</h1>
+        <label className={style.name}>
+          <div>이름</div>
+          <input type="text" />
+        </label>
+        <h1 className={style.title}>날짜 지정</h1>
+        <div className={style.dateInputContainer}>
+          <label className={style.year}>
+            <input type="number" />
+            <div>년</div>
+          </label>
+          <label className={style.month}>
+            <input type="number" />
+            <div>월</div>
+          </label>
+          <label className={style.date}>
+            <input type="number" />
+            <div>일</div>
+          </label>
+        </div>
+        <div className={style.closeButton}>
+          <button onClick={handleDelete}>닫기</button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -64,3 +64,112 @@
   background-color: #eaeaea;
   border-radius: 15px;
 }
+
+/* 아이템 추가 컨테이너 */
+.addContainer {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(100, 100, 100, 0.2);
+
+  font-size: 1.1em;
+}
+.addContainer .fixedBox {
+  background-color: white;
+  width: 80%;
+  max-width: 400px;
+  padding: 30px;
+  padding-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px gray;
+}
+.fixedBox label {
+  display: flex;
+  gap: 3px;
+}
+.fixedBox .title {
+  border-bottom: 1px solid gray;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
+}
+.fixedBox .name {
+  margin: 10px;
+}
+.name input {
+  border-radius: 5px;
+  padding: 3px;
+  border: 1px solid gray;
+}
+
+/* 추가하기 컴포넌트 속에 있는 초기화 주기 설정 부분 */
+.resetContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+.resetContainer h1 {
+  border-bottom: 1px solid gray;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+}
+.resetMethod {
+  margin: 10px;
+  display: flex;
+  gap: 15px;
+}
+.resetMethod input {
+  margin-left: 5px;
+  width: 18px;
+}
+.dueContainer {
+  padding: 10px;
+}
+
+/* 투두 추가하기 -> 초기화 옵션 며칠마다로 설정 */
+.dateContainer input {
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 50px;
+}
+
+/* 투두 추가하기 -> 초기화 옵션 요일마다로 설정 */
+.dayContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.dayContainer input {
+  width: 20px;
+}
+
+/* 닫기 버튼 */
+.closeButton {
+  display: flex;
+  justify-content: center;
+}
+.closeButton button {
+  padding: 10px 30px;
+  border-radius: 15px;
+  border: 1px solid gray;
+  margin-top: 20px;
+
+  font-size: 1.1em;
+  background-color: #f3f3f3;
+}
+
+/* 캘린더 추가하기(투두와 큰 틀 공유함) */
+.dateInputContainer {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.dateInputContainer input {
+  width: 50%;
+}

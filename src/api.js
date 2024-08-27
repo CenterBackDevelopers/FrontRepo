@@ -5,13 +5,18 @@ export async function signIn({ id, password }) {
   // 서버와의 작업은 mock 데이터로 대체함
   for (const user of data) {
     if (user.userId === id && user.uesrPassword === password) {
-      // 아이디/비밀번호가 올바르면 true를 리턴함
-      return true;
+      // 아이디/비밀번호가 올바르면 Response를 리턴함
+      const response = {
+        userName: user.userName,
+        userId: user.userId,
+        userPassword: user.userPassword,
+      };
+      return response;
     }
   }
 
-  // 아이디/비밀번호가 틀리면 false를 리턴함
-  return false;
+  // 아이디/비밀번호가 틀리면 undefined를 리턴함
+  return undefined;
 }
 
 // SignUpPage의 아이디 중복 확인 버튼 함수

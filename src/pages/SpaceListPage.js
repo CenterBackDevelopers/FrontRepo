@@ -25,7 +25,7 @@ function SpaceListPage() {
   const borderStyle = isDark ? borderBottom : undefined;
 
   return (
-    <div style={base} className={style.container}>
+    <div style={baseStyle} className={style.container}>
       <h1 style={borderStyle} className={style.title}>
         Space List
       </h1>
