@@ -319,6 +319,7 @@ function SignUpPage() {
                   name="id"
                   value={inputs.id}
                   onChange={hadnleInputsChange}
+                  disabled={isDuplicate === false}
                 />
                 <p className={style.alert} ref={duplicateAlertRef}>
                   {duplicateAlert}
@@ -475,7 +476,13 @@ function SignUpPage() {
           </div>
 
           <div className={style.signUpButtonContainer}>
-            <button type="button" onClick={handleSignUp} disabled={isLoading}>
+            <button
+              type="button"
+              onClick={handleSignUp}
+              disabled={
+                isLoading || isDuplicate === true || isDuplicate === null
+              }
+            >
               회원 가입
             </button>
           </div>
